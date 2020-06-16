@@ -1,0 +1,230 @@
+openapi: 3.0.0
+info:
+  description: this is a restful api of dtp
+  title: nirvana
+  version: v1.0
+servers:
+- url: http://0.0.0.0:9090/api/
+tags:
+- description: everything about namespace
+  name: namespace
+
+
+paths:
+  /check:
+    post:
+      description: get list of namespaces
+      operationId: server.api.check.check
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                path:
+                  type: string
+                method:
+                  type: string
+                headers:
+                  type: object
+                query_string:
+                  type: string
+                  nullable: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      properties:
+                        name:
+                          example: daox
+                          type: string
+                        uid:
+                          example: 1233455-1231231-1231231
+                          type: string
+                      type: object
+                    type: array
+                required:
+                - data
+                type: object
+          description: new project response
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      properties:
+                        name:
+                          example: daox
+                          type: string
+                        uid:
+                          example: 1233455-1231231-1231231
+                          type: string
+                      type: object
+                    type: array
+                required:
+                - data
+                type: object
+          description: new project response
+      summary: get list of namespaces
+      tags:
+      - namespace
+
+    get:
+      description: get
+      operationId: server.api.check.get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      properties:
+                        name:
+                          example: daox
+                          type: string
+                        uid:
+                          example: 1233455-1231231-1231231
+                          type: string
+                      type: object
+                    type: array
+                required:
+                - data
+                type: object
+          description: new project response
+
+  /app:
+    post:
+      description: get list of namespaces
+      operationId: server.api.app.app01
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                path:
+                  type: string
+                method:
+                  type: string
+                headers:
+                  type: object
+                query_string:
+                  type: string
+                  nullable: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      properties:
+                        name:
+                          example: daox
+                          type: string
+                        uid:
+                          example: 1233455-1231231-1231231
+                          type: string
+                      type: object
+                    type: array
+                required:
+                - data
+                type: object
+          description: new project response
+      summary: get list of namespaces
+      tags:
+      - namespace
+
+  /method:
+    get:
+      description: get list of namespaces
+      operationId: server.api.method.get
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+          description: namespace的返回列表
+      summary: 获取namespace的列表
+
+  /auth:
+    get:
+      summary: 第三方鉴权
+      description: 第三方鉴权
+      operationId: server.api.auth.get
+      parameters:
+      - description: 鉴权参数
+        in: query
+        name: token
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+          description: namespace的返回列表
+
+    post:
+      summary: 第三方鉴权
+      description: 第三方鉴权
+      operationId: server.api.auth.post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+          description: namespace的返回列表
+
+
+
